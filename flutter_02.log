@@ -1,0 +1,66 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run --machine --target lib/main.dart -d emulator-5554 --dart-define=flutter.inspector.structuredErrors=true --start-paused --web-server-debug-protocol ws --web-allow-expose-url --devtools-server-address http://127.0.0.1:9100/
+
+## exception
+
+NoSuchMethodError: NoSuchMethodError: The method 'contains' was called on null.
+Receiver: null
+Tried calling: contains("ext.flutter.activeDevToolsServerAddress")
+
+```
+#0      Object.noSuchMethod (dart:core-patch/object_patch.dart:54:5)
+#1      waitForExtension (package:flutter_tools/src/resident_runner.dart:1483:31)
+<asynchronous suspension>
+#2      ResidentRunner._callDevToolsUriExtension (package:flutter_tools/src/resident_runner.dart:1302:5)
+<asynchronous suspension>
+#3      Future.wait.<anonymous closure> (dart:async/future.dart)
+<asynchronous suspension>
+#4      ResidentRunner.maybeCallDevToolsUriServiceExtension (package:flutter_tools/src/resident_runner.dart:1291:7)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 2.0.4, on macOS 11.2.3 20D91 darwin-x64, locale es-PY)
+    • Flutter version 2.0.4 at /Users/mega/development/flutter
+    • Framework revision b1395592de (hace 9 d'ias), 2021-04-01 14:25:01 -0700
+    • Engine revision 2dce47073a
+    • Dart version 2.12.2
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 29.0.2)
+    • Android SDK at /Users/mega/Library/Android/sdk/
+    • Platform android-30, build-tools 29.0.2
+    • ANDROID_HOME = /Users/mega/Library/Android/sdk/
+    • Java binary at: /Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/bin/java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_202-release-1483-b49-5587405)
+    • All Android licenses accepted.
+
+[✓] Xcode - develop for iOS and macOS
+    • Xcode at /Applications/Xcode.app/Contents/Developer
+    • Xcode 12.4, Build version 12D4e
+    • CocoaPods version 1.10.1
+
+[✓] Chrome - develop for the web
+    • Chrome at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+
+[✓] Android Studio (version 3.5)
+    • Android Studio at /Applications/Android Studio.app/Contents
+    • Flutter plugin version 43.0.1
+    • Dart plugin version 191.8593
+    • Java version OpenJDK Runtime Environment (build 1.8.0_202-release-1483-b49-5587405)
+
+[✓] VS Code (version 1.55.0)
+    • VS Code at /Applications/Visual Studio Code.app/Contents
+    • Flutter extension version 3.21.0
+
+[✓] Connected device (2 available)
+    • AOSP on IA Emulator (mobile) • emulator-5554 • android-x86    • Android 9 (API 28) (emulator)
+    • Chrome (web)                 • chrome        • web-javascript • Google Chrome 89.0.4389.114
+
+• No issues found!
+```

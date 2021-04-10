@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:peliculas/src/models/pelicula_model.dart';
 
 
 class CardSwiper extends StatelessWidget {
-  final List<dynamic> peliculas;
+  final List<Pelicula> peliculas;
 
   const CardSwiper({@required this.peliculas});
 
@@ -13,21 +14,22 @@ class CardSwiper extends StatelessWidget {
     final _screenSize = MediaQuery.of(context).size;
 
     return Container(
-      padding: EdgeInsets.only(top:30.0),
+      padding: EdgeInsets.only(top:20.0),
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
           return 
           ClipRRect(
             borderRadius: BorderRadius.circular(15.0),
-            child: Image.network(
-              "https://www.megaeletronicos.com/assets/img/banners/bn3.jpg",
+            child: FadeInImage(
+              image: NetworkImage( peliculas[index].getPosterImg() ),
+              placeholder: AssetImage('assets/img/no-image.jpg'),
               fit: BoxFit.cover,
-            ),
+            )
           );
         },
         itemCount: peliculas.length,
-        itemWidth: _screenSize.width * 0.7,
-        itemHeight: 400.0,
+        itemWidth: _screenSize.width * 0.65,
+        itemHeight: _screenSize.height * 0.5,
         layout: SwiperLayout.STACK,
       ),
     );
